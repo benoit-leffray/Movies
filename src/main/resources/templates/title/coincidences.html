@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8" />
+
+    <title>Show Coincidences</title>
+
+    <link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+</head>
+<body>
+<!--/*@thymesVar id="titles" type="java.lang.Iterable<com.movies.demo.domain.TitleDto>"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">Movies where the 2 actors met:</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive" th:if="${not #lists.isEmpty(titles)}">
+                            <table class="table table-hover ">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Primary title</th>
+                                    <th>Original title</th>
+                                    <th>Genre</th>
+                                    <th>Runtime Minutes</th>
+                                </tr>
+                                </thead>
+                                <tr th:each="title : ${titles}">
+                                    <td th:text="${title.getId()}">334</td>
+                                    <td th:text="${title.getPrimaryTitle()}">Primary title</td>
+                                    <td th:text="${title.getOriginalTitle()}">Original title</td>
+                                    <td th:text="${title.getGenre()}">Genre</td>
+                                    <td th:text="${title.getRuntimeMinutes()}">Runtime minutes</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

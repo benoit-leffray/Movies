@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Find Coincidences</title>
+
+    <link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+</head>
+<body>
+<!--/*@thymesVar id="coincidence" type="com.movies.demo.commands.FindCoincidence"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form  th:object="${coincidence}" th:action="@{/title/find-coincidence/}" method="post">
+                <div class="pannel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Edit Recipe Information</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Enter the name of first actor:</label>
+                                    <input type="text" class="form-control" th:field="*{personName1}"/>
+                                </div>
+                                <div class="col-md-3 form-group">
+                                    <label>Enter the name of second actor:</label>
+                                    <input type="text" class="form-control" th:field="*{personName2}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

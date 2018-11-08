@@ -1,0 +1,18 @@
+SELECT t.primary_title
+
+FROM title t
+INNER JOIN person_title pt1 ON pt1.title_id = t.id
+INNER JOIN person_title pt2 ON pt1.person_id <> pt2.person_id AND pt1.title_id = pt2.title_id
+
+INNER JOIN person p1 ON p1.id = pt1.person_id
+INNER JOIN person p2 ON p2.id = pt2.person_id
+
+WHERE p1.primary_name = 'primaryName' AND p2.primary_name = 'primaryName2'
+
+;
+
+select * from title;
+select * from principal;
+select * from person;
+select * from person_title;
+select * from ratings;

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8" />
+
+    <title>Show Movie</title>
+
+    <link rel="stylesheet" href="../static/css/blog.css" th:href="@{/css/blog.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+</head>
+<body>
+<!--/*@thymesVar id="title" type="com.movies.demo.domain.TitleDto"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="pannel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <h1 class="panel-title">Show Movie</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover ">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Primary title</th>
+                                    <th>Original title</th>
+                                    <th>Genre</th>
+                                    <th>Runtime minutes</th>
+                                    <th>Average rating</th>
+                                    <th>Number of votes</th>
+                                </tr>
+                                </thead>
+                                    <td th:text="${title.getId()}">334</td>
+                                    <td th:text="${title.getPrimaryTitle()}">Primary title</td>
+                                    <td th:text="${title.getOriginalTitle()}">Original title</td>
+                                    <td th:text="${title.getGenres()}">Genre</td>
+                                    <td th:text="${title.getRuntimeMinutes()}">Runtime minutes</td>
+                                    <td th:text="${title.getRatings().getAverageRating()}">Average rating</td>
+                                    <td th:text="${title.getRatings().getNumVotes()}">Number of votes</td>
+                            </table>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover ">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                    <th>Characters</th>
+                                    <th>Job</th>
+                                    <th>Name</th>
+                                    <th>Birth Year</th>
+                                    <th>Death Year</th>
+                                </tr>
+                                </thead>
+                                <tr th:each="principal : ${title.principals}">
+                                    <td th:text="${principal.getId()}">334</td>
+                                    <td th:text="${principal.getCategory()}">Category</td>
+                                    <td th:text="${principal.getCharacters()}">Characters</td>
+                                    <td th:text="${principal.getJob()}">Job</td>
+                                    <td th:text="${principal.getPerson().getPrimaryName()}">Name</td>
+                                    <td th:text="${principal.getPerson().getBirthYear()}">Birth Year</td>
+                                    <td th:text="${principal.getPerson().getDeathYear()}">Death Year</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
